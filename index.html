@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>pushim</title>
+</head>
+<body>
+<input value="011" class="input">
+<button onclick="show()">show</button>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
+      authDomain: "push-api-test-65c23.firebaseapp.com",
+      databaseURL: "https://push-api-test-65c23.firebaseio.com",
+      projectId: "push-api-test-65c23",
+      storageBucket: "",
+      messagingSenderId: "301131752481"
+  };
+  firebase.initializeApp(config);
+  const messaging = firebase.messaging();
+  messaging.requestPermission()
+  .then(function () {
+      console.log('Have permission');
+  })
+  .catch(function (err) {
+      console.log(('Error'));
+  })
+</script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
