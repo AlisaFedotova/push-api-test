@@ -5,6 +5,7 @@
   <title>pushim</title>
 </head>
 <body>
+<button type="button" id="subscribe">Подписаться</button>
 <input value="011" class="input">
 <button onclick="show()">show</button>
 
@@ -22,14 +23,21 @@
   };
   firebase.initializeApp(config);
   const messaging = firebase.messaging();
+
+  // Add the public key generated from the console here.
+  messaging.usePublicVapidKey('BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
+
   messaging.requestPermission()
   .then(function () {
       console.log('Have permission');
   })
   .catch(function (err) {
       console.log(('Error'));
-  })
+  });
+
 </script>
+<script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script type="text/javascript" src="/firebase_subscribe.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
