@@ -16,7 +16,6 @@ firebase.initializeApp(config);
 if ('Notification' in window) {
     var messaging = firebase.messaging();
 
-    // Add the public key generated from the console here.
     messaging.usePublicVapidKey('BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
 
 
@@ -36,9 +35,9 @@ if ('Notification' in window) {
 
     // по клику, запрашиваем у пользователя разрешение на уведомления
     // и подписываем его
-    $('#subscribe').on('click', function () {
-        subscribe();
-    });
+    document.querySelector('#subscribe').addEventListener('click',function () {
+            subscribe();
+    })
 }
 
 function subscribe() {
@@ -72,11 +71,15 @@ function sendTokenToServer(currentToken) {
     if (!isTokenSentToServer(currentToken)) {
         console.log('Отправка токена на сервер...');
 
-        var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
-        $.post(url, {
-            token: currentToken
+        var url = 'firebase_subscribe.js'; // адрес скрипта на сервере который сохраняет ID устройства
+        let data = new FormData();
+        data.append('token', currentToken);
+        fetch(url, {
+            method: 'POST',
+            body: data
+        }).then(function (e) {
+            console.log(e);
         });
-
         setTokenSentToServer(currentToken);
     } else {
         console.log('Токен уже отправлен на сервер.');
