@@ -1,6 +1,3 @@
-firebase.initializeApp({
-    messagingSenderId: '<SENDER_ID>'
-});
 
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
