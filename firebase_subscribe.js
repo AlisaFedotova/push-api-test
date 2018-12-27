@@ -19,6 +19,7 @@ if ('Notification' in window) {
     // Add the public key generated from the console here.
     messaging.usePublicVapidKey('BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
 
+
     messaging.requestPermission()
              .then(function () {
                  console.log('Have permission');
