@@ -1,7 +1,31 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
+    authDomain: "push-api-test-65c23.firebaseapp.com",
+    databaseURL: "https://push-api-test-65c23.firebaseio.com",
+    projectId: "push-api-test-65c23",
+    storageBucket: "",
+    messagingSenderId: "301131752481"
+};
+firebase.initializeApp(config);
+
+
+
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
 if ('Notification' in window) {
     var messaging = firebase.messaging();
+
+    // Add the public key generated from the console here.
+    messaging.usePublicVapidKey('BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
+
+    messaging.requestPermission()
+             .then(function () {
+                 console.log('Have permission');
+             })
+             .catch(function (err) {
+                 console.log(('Error: Have no permission'));
+             });
 
     // пользователь уже разрешил получение уведомлений
     // подписываем на уведомления если ещё не подписали
