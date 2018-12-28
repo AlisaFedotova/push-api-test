@@ -18,26 +18,30 @@ if ('Notification' in window) {
     messaging.usePublicVapidKey(
         'BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
 
-    messaging.requestPermission()
-             .then(function () {
-                 console.log('Have permission');
+    navigator.serviceWorker.register('firebase-messaging-sw.js')
+             .then(function (reg) {
+                 messaging.useServiceWorker(reg);
+                 messaging.requestPermission()
+                          .then(function () {
+                              console.log('Have permission');
+                          })
+                          .catch(function (err) {
+                              console.log(('Error: Have no permission'));
+                          });
+
+                 // пользователь уже разрешил получение уведомлений
+                 // подписываем на уведомления если ещё не подписали
+                 if (Notification.permission === 'granted') {
+                     subscribe();
+                 }
+
+                 // по клику, запрашиваем у пользователя разрешение на уведомления
+                 // и подписываем его
+
+                 document.querySelector('#subscribe').addEventListener('click', function () {
+                     subscribe();
+                 });
              })
-             .catch(function (err) {
-                 console.log(('Error: Have no permission'));
-             });
-
-    // пользователь уже разрешил получение уведомлений
-    // подписываем на уведомления если ещё не подписали
-    if (Notification.permission === 'granted') {
-        subscribe();
-    }
-
-    // по клику, запрашиваем у пользователя разрешение на уведомления
-    // и подписываем его
-
-    document.querySelector('#subscribe').addEventListener('click', function () {
-        subscribe();
-    })
 }
 
 function subscribe() {
@@ -48,7 +52,6 @@ function subscribe() {
                  // получаем ID устройства
                  messaging.getToken()
                           .then(function (currentToken) {
-                              console.log('currentToken: ',currentToken);
                               if (currentToken) {
                                   sendTokenToServer(currentToken);
                               } else {
