@@ -1,0 +1,19 @@
+POST http://fooo.com
+Content-Type: application/json
+
+###
+
+POST https://alisafedotova.github.io/push-api-test/:send
+Content-Type: application/json
+Authorization: key=AAAARhzZ5CE:APA91bFyqiQKF5hDfn8Cp5bWd6VFMqMpUtoApf1mYP7IxtKF2MpRpS-O9FCwFJFwEmI9cq1IYMRVYz6ZgKpbYgwroHFKnD7ChO79CAgOTRXOurEUV6mMHKkZQM7bbUzaldfEjenMLhAA
+
+{
+  "message":{
+    "title": "hey dude",
+    "token" : "cFSo3fuQAk8:APA91bFp6kjIednkOPcyqLQ9v3mddUPZhGckoToCxnsJJmbfpfu7jjb3Kwgqez_RuijjpURQentD9ycgdCuQtx34vXbPacM3fewtMsyKV1_PJyqfyQrkG9wEJsIdEXI8-bOjgV8p5gW6",
+    "notification" : {
+      "body" : "This is an FCM notification message!",
+      "title" : "FCM Message"
+    }
+  }
+}
