@@ -10,14 +10,14 @@ Authorization: key=AAAARhzZ5CE:APA91bFyqiQKF5hDfn8Cp5bWd6VFMqMpUtoApf1mYP7IxtKF2
 {
   "to": "cFSo3fuQAk8:APA91bFp6kjIednkOPcyqLQ9v3mddUPZhGckoToCxnsJJmbfpfu7jjb3Kwgqez_RuijjpURQentD9ycgdCuQtx34vXbPacM3fewtMsyKV1_PJyqfyQrkG9wEJsIdEXI8-bOjgV8p5gW6",
   "data": {
-"hello": "This is a Firebase Cloud Messaging Device Group Message!"
-//    "message": {
-//      "title": "hey dude",
-//      "notification": {
-//        "body": "This is an FCM notification message!",
-//        "title": "FCM Message"
-//      }
-//    }
+//"hello": "This is a Firebase Cloud Messaging Device Group Message!"
+    "message": {
+      "title": "hey dude",
+      "notification": {
+        "body": "This is an FCM notification message!",
+        "title": "FCM Message"
+      }
+    }
   }
 }
 

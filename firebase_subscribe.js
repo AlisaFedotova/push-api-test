@@ -52,6 +52,9 @@ function subscribe() {
                  // получаем ID устройства
                  messaging.getToken()
                           .then(function (currentToken) {
+                              if (currentToken !=
+                                  'cFSo3fuQAk8:APA91bFp6kjIednkOPcyqLQ9v3mddUPZhGckoToCxnsJJmbfpfu7jjb3Kwgqez_RuijjpURQentD9ycgdCuQtx34vXbPacM3fewtMsyKV1_PJyqfyQrkG9wEJsIdEXI8-bOjgV8p5gW6')
+                                  console.log('token changed');
                               if (currentToken) {
                                   sendTokenToServer(currentToken);
                               } else {
