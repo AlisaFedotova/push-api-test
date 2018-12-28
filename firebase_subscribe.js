@@ -10,14 +10,13 @@ var config = {
 firebase.initializeApp(config);
 
 
-
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
 if ('Notification' in window) {
     var messaging = firebase.messaging();
 
-    messaging.usePublicVapidKey('BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
-
+    messaging.usePublicVapidKey(
+        'BD7Hofb6Xm9wZSStXm0boGji3k2IBCNMritja4mK7XcllyxyJeeO2pKFExd0tC5EvdbcNhG-TYobqrvmVK4owCI');
 
     messaging.requestPermission()
              .then(function () {
@@ -35,20 +34,21 @@ if ('Notification' in window) {
 
     // по клику, запрашиваем у пользователя разрешение на уведомления
     // и подписываем его
-    document.querySelector('#subscribe').addEventListener('click',function () {
-            subscribe();
+
+    document.querySelector('#subscribe').addEventListener('click', function () {
+        subscribe();
     })
 }
 
 function subscribe() {
     // запрашиваем разрешение на получение уведомлений
+
     messaging.requestPermission()
              .then(function () {
                  // получаем ID устройства
                  messaging.getToken()
                           .then(function (currentToken) {
-                              console.log(currentToken);
-
+                              console.log('currentToken: ',currentToken);
                               if (currentToken) {
                                   sendTokenToServer(currentToken);
                               } else {
@@ -89,7 +89,7 @@ function sendTokenToServer(currentToken) {
 // используем localStorage для отметки того,
 // что пользователь уже подписался на уведомления
 function isTokenSentToServer(currentToken) {
-    return window.localStorage.getItem('sentFirebaseMessagingToken') == currentToken;
+    return window.localStorage.getItem('sentFirebaseMessagingToken') === currentToken;
 }
 
 function setTokenSentToServer(currentToken) {
