@@ -13,6 +13,8 @@ messaging.onMessage(function(payload) {
     // ...
 });
 
+
+
 var decorate = (n, offset, lights) => {
     var decoration, pos = [];
 
