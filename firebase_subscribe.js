@@ -123,7 +123,7 @@ let database = firebase.database();
 
 function writeTokenData(userId, token) {
     let date = new Date;
-    firebase.database().ref('users/' + userId).set({
+    database.ref('users/' + userId).set({
         token: token,
         date: date
     });
