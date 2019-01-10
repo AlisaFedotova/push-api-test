@@ -77,7 +77,7 @@ function subscribe() {
 
 // отправка ID на сервер
 function sendTokenToServer(currentToken) {
-    writeTokenData('1', currentToken);
+    // writeTokenData(1, "jkzdsfvkj");
     if (!isTokenSentToServer(currentToken)) {
         console.log('Отправка токена на сервер...');
 
@@ -109,23 +109,26 @@ function setTokenSentToServer(currentToken) {
     );
 }
 
+//trying db
+
 // Set the configuration for your app
-let dbConfig = {
-    apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
-    authDomain: "https://alisafedotova.github.io/push-api-test/",
-    databaseURL: "https://push-api-test-65c23.firebaseio.com/",
-    storageBucket: "bucket.appspot.com"
-};
-firebase.initializeApp(dbConfig);
-
-// Get a reference to the database service
-let database = firebase.database();
-
-function writeTokenData(userId, token) {
-    let date = new Date;
-    database.ref('users/' + userId).set({
-        token: token,
-        date: date
-    });
-}
+// let dbConfig = {
+//     apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
+//     authDomain: "https://alisafedotova.github.io/push-api-test/",
+//     databaseURL: "https://push-api-test-65c23.firebaseio.com/",
+//     // storageBucket: "bucket.appspot.com"
+// };
+// // firebase.initializeApp(dbConfig);
+//
+// // Get a reference to the database service
+// let database = firebase.database();
+//
+// function writeTokenData(userId, token) {
+//     console.log('token data saved');
+//     let date = new Date;
+//     firebase.database().ref('users/' + userId).set({
+//         token: token,
+//         date: date
+//     });
+// }
 
