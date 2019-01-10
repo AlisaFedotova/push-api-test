@@ -2,7 +2,7 @@
 var config = {
     apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
     authDomain: "push-api-test-65c23.firebaseapp.com",
-    databaseURL: "https://push-api-test-65c23.firebaseio.com",
+    databaseURL: "https://push-api-test-65c23.firebaseio.com/",
     projectId: "push-api-test-65c23",
     storageBucket: "",
     messagingSenderId: "301131752481"
@@ -110,13 +110,13 @@ function setTokenSentToServer(currentToken) {
 }
 
 // Set the configuration for your app
-let appConfig = {
+let dbConfig = {
     apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
     authDomain: "https://alisafedotova.github.io/push-api-test/",
     databaseURL: "https://push-api-test-65c23.firebaseio.com/",
     storageBucket: "bucket.appspot.com"
 };
-firebase.initializeApp(appConfig);
+firebase.initializeApp(dbConfig);
 
 // Get a reference to the database service
 let database = firebase.database();
