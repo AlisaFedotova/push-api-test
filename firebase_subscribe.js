@@ -110,13 +110,13 @@ function setTokenSentToServer(currentToken) {
 }
 
 // Set the configuration for your app
-let config = {
+let appConfig = {
     apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
     authDomain: "https://alisafedotova.github.io/push-api-test/",
     databaseURL: "https://push-api-test-65c23.firebaseio.com/",
     storageBucket: "bucket.appspot.com"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(appConfig);
 
 // Get a reference to the database service
 let database = firebase.database();
