@@ -39,7 +39,10 @@ if ('Notification' in window) {
                  // и подписываем его
 
                  document.querySelector('#subscribe').addEventListener('click', function () {
-                     subscribe();
+                     Notification.requestPermission(
+                         function (status) {
+                             console.log('Notification permition status:', status);
+                         });
                  });
              })
 }
@@ -74,6 +77,7 @@ function subscribe() {
 
 // отправка ID на сервер
 function sendTokenToServer(currentToken) {
+    writeTokenData('1', currentToken);
     if (!isTokenSentToServer(currentToken)) {
         console.log('Отправка токена на сервер...');
 
@@ -105,4 +109,23 @@ function setTokenSentToServer(currentToken) {
     );
 }
 
+// Set the configuration for your app
+let config = {
+    apiKey: "AIzaSyCU2dJfUV41uV-Zv-jh3RhZM17eGNix3oI",
+    authDomain: "https://alisafedotova.github.io/push-api-test/",
+    databaseURL: "https://push-api-test-65c23.firebaseio.com/",
+    storageBucket: "bucket.appspot.com"
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+let database = firebase.database();
+
+function writeTokenData(userId, token) {
+    let date = new Date;
+    firebase.database().ref('users/' + userId).set({
+        token: token,
+        date: date
+    });
+}
 
