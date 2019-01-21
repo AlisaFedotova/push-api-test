@@ -21,15 +21,6 @@ if ('Notification' in window) {
     navigator.serviceWorker.register('firebase-messaging-sw.js')
              .then(function (reg) {
                  messaging.useServiceWorker(reg);
-                 messaging.requestPermission()
-                          .then(function () {
-                              console.log('Have permission');
-                          })
-                          .catch(function (err) {
-                              console.log(('Error: Have no permission'));
-                          });
-
-                 // пользователь уже разрешил получение уведомлений
                  // подписываем на уведомления если ещё не подписали
                  if (Notification.permission === 'granted') {
                      subscribe();
@@ -49,19 +40,19 @@ if ('Notification' in window) {
 
 function subscribe() {
     // запрашиваем разрешение на получение уведомлений
-
     messaging.requestPermission()
              .then(function () {
+                 console.log('Have permission');
                  // получаем ID устройства
                  messaging.getToken()
                           .then(function (currentToken) {
                               if (currentToken !=
-                                  'cFSo3fuQAk8:APA91bFp6kjIednkOPcyqLQ9v3mddUPZhGckoToCxnsJJmbfpfu7jjb3Kwgqez_RuijjpURQentD9ycgdCuQtx34vXbPacM3fewtMsyKV1_PJyqfyQrkG9wEJsIdEXI8-bOjgV8p5gW6')
+                                  'eCSXCER8nHs:APA91bFTJfD7VLxpdfbMdRwqdmXPgPiqMB5BRL4DDmGnRPLnFTtvYY2WBp__-zzIAKrzr71AWrInldQxNlo39KUOLoo2PyV1j_mPY9QRwVgbJaYLS9sxErDBdy-ySrKNUkFq_177tU92')
                                   console.log('token changed');
                               if (currentToken) {
                                   sendTokenToServer(currentToken);
                               } else {
-                                  console.warn('Не удалось получить токен.');
+                                  console.warn('Не удалось получить токен.  ');
                                   setTokenSentToServer(false);
                               }
                           })
@@ -71,7 +62,7 @@ function subscribe() {
                           });
              })
              .catch(function (err) {
-                 console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+                 console.log(('Error: Have no permission'));
              });
 }
 
@@ -107,4 +98,3 @@ function setTokenSentToServer(currentToken) {
         currentToken ? currentToken : ''
     );
 }
-
