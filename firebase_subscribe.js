@@ -48,11 +48,6 @@ function subscribe() {
                  // получаем ID устройства
                  messaging.getToken()
                           .then(function (currentToken) {
-                              if (currentToken !=
-                                  'eCSXCER8nHs:APA91bFTJfD7VLxpdfbMdRwqdmXPgPiqMB5BRL4DDmGnRPLnFTtvYY2WBp__-zzIAKrzr71AWrInldQxNlo39KUOLoo2PyV1j_mPY9QRwVgbJaYLS9sxErDBdy-ySrKNUkFq_177tU92')
-                                  console.log('token changed');
-                              console.log('endpoint 1',firebase.endpoint, typeof PushSubscription.endpoint);
-
                               if (currentToken) {
                                   sendTokenToServer(currentToken);
                               } else {
@@ -69,8 +64,6 @@ function subscribe() {
              .catch(function (err) {
                  console.log(('Error: Have no permission'));
              });
-    console.log('endpoint 2',firebase.endpoint, typeof PushSubscription.endpoint);
-
 }
 
 // отправка ID на сервер
@@ -104,4 +97,5 @@ function setTokenSentToServer(currentToken) {
         'sentFirebaseMessagingToken',
         currentToken ? currentToken : ''
     );
+
 }
